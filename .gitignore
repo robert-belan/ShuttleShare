@@ -1,1 +1,6 @@
 astroLog.code-workspace
+node_modules/
+.env
+
+storehouse/
+dist/

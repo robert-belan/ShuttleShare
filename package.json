@@ -1,11 +1,41 @@
 {
-  "name": "astrolog",
+  "name": "astronauts-everywhere",
   "version": "0.0.1",
   "description": "TODO Description",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve"
   },
   "author": "Robert Belan <info@robertbelan.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/plugin-transform-runtime": "^7.16.10",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@fontsource/roboto": "^4.5.1",
+    "@mui/icons-material": "^5.3.1",
+    "@mui/material": "^5.3.1",
+    "@mui/x-data-grid": "^5.3.0",
+    "babel-loader": "^8.2.3",
+    "firebase": "^9.6.4",
+    "html-webpack-plugin": "^5.5.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hook-form": "^7.25.0",
+    "react-hot-toast": "^2.2.0",
+    "react-router-dom": "^6.2.1",
+    "webpack": "^5.67.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.3",
+    "webpack-server": "^0.1.2"
+  },
+  "devDependencies": {
+    "css-loader": "^6.5.1",
+    "dotenv-webpack": "^7.0.3",
+    "style-loader": "^3.3.1"
+  }
 }
