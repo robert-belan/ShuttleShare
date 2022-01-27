@@ -55,16 +55,16 @@ export default function AddAstronaut(props) {
 		} else if (mode === "add") {
 			push(db, state)
 				.then(() => {
-					toast.success("New astronaut on the board.");
 					props.close(); // closes dialog window
+					toast.success(texts.toastNotif);
 				})
 				.catch(() => { toast.error("Adding failed. Try it later, please.") });
 		
 		} else if (mode === "edit") {
 			set(child(db, id), state)
 				.then(() => {
-					toast.success("Astrounat edited.");
 					props.close(); // closes dialog window
+					toast.success(texts.toastNotif);
 				})
 				.catch(() => { toast.error("Editing failed. Try it later, please.") })
 		
@@ -73,12 +73,13 @@ export default function AddAstronaut(props) {
 		if (mode === "remove") {
 			remove(child(db, id));
 			props.close();
-			toast.success("It was an honor to serve with you.");
+			toast.success(texts.toastNotif);
 		}
 	}
 
 	if (mode === "add") {
 		texts = {
+			toastNotif: "[Added] Welcome on the board.",
 			title: "Add astronaut",
 			contentText: "Here you can ADD a new astronaut.",
 			action: <span style={{color: "green"}}>Add</span>,
@@ -88,6 +89,7 @@ export default function AddAstronaut(props) {
 
 	if (mode === "edit") {
 		texts = {
+			toastNotif: "[Updated] Life is change.",
 			title: "Edit astronaut",
 			contentText: "Here you can UPDATE selected astronaut.",
 			action: <span style={{color: "green"}}>Update</span>,
@@ -97,6 +99,7 @@ export default function AddAstronaut(props) {
 
 	if (mode === "remove") {
 		texts = {
+			toastNotif: "[Removed] It was an honor to serve with you.",
 			title: "Remove astronaut",
 			contentText: "Do you really want to REMOVE this astronaut?",
 			action: <span style={{color: "red"}}>Yes, remove!</span>,
@@ -109,12 +112,10 @@ export default function AddAstronaut(props) {
 		<div>
 			<Dialog open={props.open} onClose={props.close}>
 				
-				<DialogTitle>{texts.title}</DialogTitle>
-				
+				<DialogTitle>{texts.title}</DialogTitle>				
 				<DialogContent>
 					<DialogContentText>{texts.contentText}</DialogContentText>
-					
-					
+										
 					<form id="newAstroForm" noValidate autoComplete="off" onSubmit={handleSubmit}>
 						{ mode !== "remove" && 
 							<div>
@@ -127,6 +128,7 @@ export default function AddAstronaut(props) {
 								name="firstName"
 								label="First Name"
 								type="text"
+								inputProps={{ maxLength: 50 }}
 								fullWidth
 								variant="outlined"
 								required
@@ -139,8 +141,10 @@ export default function AddAstronaut(props) {
 								name="lastName"
 								label="Last Name"
 								type="text"
+								inputProps={{ maxLength: 50 }}
 								fullWidth
 								variant="outlined"
+								required
 							/>
 							<TextField
 								value={birthDate}
@@ -150,8 +154,10 @@ export default function AddAstronaut(props) {
 								name="birthDate"
 								label="Birth Date"
 								type="date"
+								inputProps={{ min: "1903-01-02", max: (new Date).toISOString().substring(0, 10) }}
 								fullWidth
 								variant="outlined"
+								required
 							/>
 							<TextField
 								value={superPower}
@@ -161,12 +167,14 @@ export default function AddAstronaut(props) {
 								name="superPower"
 								label="Superpower"
 								type="text"
+								inputProps={{ maxLength: 140 }}
 								fullWidth
 								variant="outlined"
-							/></div>
-	}
+								required
+							/>
+							</div>
+						}
 						</form>
-					
 				</DialogContent>
 
 				<DialogActions>

@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve"
+    "start": "webpack serve --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
   },
   "author": "Robert Belan <info@robertbelan.com>",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "@babel/core": "^7.16.12",
     "@babel/plugin-transform-runtime": "^7.16.10",
     "@babel/preset-env": "^7.16.11",
@@ -21,21 +22,21 @@
     "@mui/material": "^5.3.1",
     "@mui/x-data-grid": "^5.3.0",
     "babel-loader": "^8.2.3",
+    "css-loader": "^6.5.1",
+    "dotenv-webpack": "^7.0.3",
     "firebase": "^9.6.4",
     "html-webpack-plugin": "^5.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.25.0",
+    "react-hot-loader": "^4.13.0",
     "react-hot-toast": "^2.2.0",
     "react-router-dom": "^6.2.1",
+    "style-loader": "^3.3.1",
     "webpack": "^5.67.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.3",
+    "webpack-merge": "^5.8.0",
     "webpack-server": "^0.1.2"
-  },
-  "devDependencies": {
-    "css-loader": "^6.5.1",
-    "dotenv-webpack": "^7.0.3",
-    "style-loader": "^3.3.1"
   }
 }
