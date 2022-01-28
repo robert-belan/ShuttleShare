@@ -8,6 +8,8 @@ const MESSAGING_SENDER_ID = process.env.REACT_APP_MESSAGING_SENDER_ID;
 const APP_ID = process.env.REACT_APP_APP_ID;
 const DATABASE_URL = process.env.REACT_APP_DATABASE_URL;
 
+console.log("db", DATABASE_URL); // temp debug code
+
 export {
     API_KEY,
     AUTH_DOMAIN,

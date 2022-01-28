@@ -16,7 +16,6 @@ module.exports = merge(common, {
       logging: 'info',
       progress: true,
     },
-    https: true,
     liveReload: false,
   },
   plugins: [
