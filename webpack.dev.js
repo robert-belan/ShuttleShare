@@ -14,7 +14,7 @@ module.exports = merge(common, {
     port: 8080,
     client: {
       logging: 'info',
-      progress: true,
+      // progress: true,
     },
     liveReload: false,
   },

@@ -10,8 +10,9 @@
   },
   "author": "Robert Belan <info@robertbelan.com>",
   "license": "MIT",
-  "dependencies": {},
-
+  "dependencies": {
+    "axios": "^0.25.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.16.12",
     "@babel/plugin-transform-runtime": "^7.16.10",

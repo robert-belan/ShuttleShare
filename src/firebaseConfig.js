@@ -1,26 +1,20 @@
-import {
-    API_KEY,
-    AUTH_DOMAIN,
-    PROJECT_ID,
-    STORAGE_BUCKET,
-    MESSAGING_SENDER_ID,
-    APP_ID,
-    DATABASE_URL
-} from './environment';
-
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref } from 'firebase/database';
 
-const firebaseConfig = {
-    apiKey: `${API_KEY}`,
-    authDomain: `${AUTH_DOMAIN}`,
-    projectId: `${PROJECT_ID}`,
-    storageBucket: `${STORAGE_BUCKET}`,
-    messagingSenderId: `${MESSAGING_SENDER_ID}`,
-    appId: `${APP_ID}`,
-    databaseURL: `${DATABASE_URL}`
-};
+let firebaseConfig = {};
+
+
+if ( process.env.NODE_ENV === "development") {
+    const devEnv = await import('./environment.dev');
+    firebaseConfig = { ...devEnv };
+} 
+
+
+if ( process.env.NODE_ENV === "production") {
+    const response = await fetch("https://wonderful-hamilton-9b9837.netlify.app/netlify/functions/api");
+    const devEnv = await response.json();
+    firebaseConfig = { ...devEnv };
+}
 
 
 // Initialize Firebase
