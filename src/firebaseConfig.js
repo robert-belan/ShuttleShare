@@ -11,7 +11,7 @@ if ( process.env.NODE_ENV === "development") {
 
 
 if ( process.env.NODE_ENV === "production") {
-    const response = await fetch("https://wonderful-hamilton-9b9837.netlify.app/netlify/functions/api");
+    const response = await fetch("https://wonderful-hamilton-9b9837.netlify.app/.netlify/functions/api");
     const devEnv = await response.json();
     firebaseConfig = { ...devEnv };
     console.log('firebaseConfig :>> ', firebaseConfig);
