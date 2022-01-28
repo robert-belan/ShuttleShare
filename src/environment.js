@@ -1,3 +1,5 @@
+import process from 'process';
+
 const API_KEY = process.env.REACT_APP_API_KEY;
 const AUTH_DOMAIN = process.env.REACT_APP_AUTH_DOMAIN;
 const PROJECT_ID = process.env.REACT_APP_PROJECT_ID;
