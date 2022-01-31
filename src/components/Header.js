@@ -1,20 +1,26 @@
 import React from 'react';
-import {Link as RouterLink} from 'react-router-dom';
-import { ButtonGroup, Divider, Stack, Button } from '@mui/material';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme  } from '@mui/material/styles';
+import {NavLink, Link as RouterLink} from 'react-router-dom';
+import { ButtonGroup, Stack, Button, useMediaQuery } from '@mui/material';
+import { useTheme, makeStyles } from '@mui/styles';
 
+const useStyles = makeStyles({
+    button: {
+        '&.active': {
+            backgroundColor: 'rgba(212,160,137,0.2)'
+        }
+    }
+})
 
 export default function Header() {
 
     const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.up('sm'));
+    const classes = useStyles();
 
     return (<>
                 <Stack 
                     direction={ {xs: "column", sm: "column", md: "row", lg: "row", xl: "row"} } 
                     spacing={ {xs: 2, sm: 2} }
-                    divider={<Divider orientation="vertical" flexItem />}
                     justifyContent={matches ? "space-between" : "center"}
                     alignItems="center"
                 >
@@ -28,14 +34,14 @@ export default function Header() {
                         
                     <ButtonGroup 
                         size="medium" 
-                        disableRipple={true} 
                         fullWidth={matches ? false : true}
                         variant="outlined"
                         color="secondary"
+
                         >
-                        <Button component={RouterLink} to="/">Dashboard</Button>
-                        <Button component={RouterLink} to="/about">About</Button>
-                        <Button component={RouterLink} to="/settings">Settings</Button>
+                        <Button className={classes.button} component={NavLink} to="/">Dashboard</Button>
+                        <Button className={classes.button} component={NavLink} to="/about">About</Button>
+                        <Button className={classes.button} component={NavLink} to="/settings">Settings</Button>
                     </ButtonGroup>
     
                 </Stack>

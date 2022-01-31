@@ -88,8 +88,8 @@ function Dashboard() {
                             onClick={() => handleDialogOpen("remove")}
                             disabled={!selectedRow.id}
                             color='secondary'
-                            sx={{ 
-                                mr: 2,
+                            sx={{
+                                mr: 4,
                                 '&.Mui-disabled': {
                                     color: 'text.disabled'
                                 }
@@ -97,6 +97,7 @@ function Dashboard() {
                         >
                             Remove
                         </Button>
+
                         <ButtonGroup
                             size="small"
                             variant="contained"
@@ -107,6 +108,7 @@ function Dashboard() {
                             >
                                 Edit
                             </Button>
+
                             <Button
                                 onClick={() => { handleDialogOpen("add") }}
                             >

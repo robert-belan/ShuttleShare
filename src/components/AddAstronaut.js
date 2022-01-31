@@ -95,8 +95,8 @@ export default function AddAstronaut(props) {
 			toastNotif: "[Added] Welcome on the board.",
 			title: "Add astronaut",
 			// contentText: "Here you can ADD a new astronaut.",
-			action: <span style={{color: theme.palette.primary.contrastText}}>Add</span>,
-			cancelAction: <span style={{color: theme.palette.primary.light}}>Cancel</span>
+			action: <span style={{color: theme.palette.background.contrast}}>Add</span>,
+			cancelAction: <span style={{color: theme.palette.background.contrast}}>Cancel</span>
 		}
 	}
 
@@ -105,8 +105,8 @@ export default function AddAstronaut(props) {
 			toastNotif: "[Updated] Life is change.",
 			title: "Edit astronaut",
 			// contentText: "Here you can UPDATE selected astronaut.",
-			action: <span style={{color: theme.palette.primary.contrastText}}>Update</span>,
-			cancelAction: <span style={{color: theme.palette.primary.light}}>Cancel</span>
+			action: <span style={{color: theme.palette.background.contrast}}>Update</span>,
+			cancelAction: <span style={{color: theme.palette.background.contrast}}>Cancel</span>
 		}
 	}
 
@@ -115,8 +115,8 @@ export default function AddAstronaut(props) {
 			toastNotif: "[Removed] It was an honor to serve with you.",
 			title: "Remove astronaut",
 			contentText: "Do you really want to REMOVE this astronaut?",
-			action: <span style={{color: "red"}}>Yes, remove!</span>,
-			cancelAction: <span style={{color: theme.palette.primary.light}}>"God, no!"</span>
+			action: <span style={{color: theme.palette.warning.main}}>Yes, remove!</span>,
+			cancelAction: <span style={{color: theme.palette.background.contrast}}>God, no!</span>
 		}
 	}
 
@@ -128,8 +128,9 @@ export default function AddAstronaut(props) {
 		'& .MuiDialogTitle-root': {
 			backgroundColor: 'primary.dark'
 		},
-		'& .MuiInputLabel-root': {
-
+		'& .MuiDialogTitle-root': {
+			backgroundColor: 'primary.main',
+			color: 'text.contrastText'
 		}
 	}
 
@@ -148,7 +149,7 @@ export default function AddAstronaut(props) {
 			'&::after': {
 				borderBottom: 'red'
 			},
-		}
+		},
 	}
 
 	return (
@@ -213,6 +214,7 @@ export default function AddAstronaut(props) {
 								name="superPower"
 								label="Superpower"
 								type="text"
+								InputLabelProps={{ shrink: true }}
 								inputProps={{ maxLength: 50 }}
 								fullWidth
 								variant="standard"
@@ -253,6 +255,7 @@ export default function AddAstronaut(props) {
 								name="note"
 								label="Note"
 								type="text"
+								InputLabelProps={{ shrink: true }}
 								inputProps={{ maxLength: 140 }}
 								fullWidth
 								variant="standard"

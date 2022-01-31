@@ -1,26 +1,54 @@
-import { createTheme } from '@mui/material';
-
-export const darkTheme = createTheme({
-	palette: {
-		type: 'dark',
-		primary: {
-			main: '#292D3E',
-		},
-		secondary: {
-			main: '#CA896C',
-		},
-		text: {
-			primary: '#dde2d8',
-			secondary: '#4589CB'
-		},
-		error: {
-			main: '#af3723',
-		},
-		background: {
-			default: "#202020"
-		},
-	},
-});
+export function getDesignTokens(mode) {
+	return (
+		{
+			palette: {
+				mode,
+				...(mode === 'dark' 
+				? {
+					// palette values for dark mode
+					primary: {
+						main: '#292D3E',
+					},
+					secondary: {
+						main: '#CA896C',
+					},
+					text: {
+						primary: '#dde2d8',
+						secondary: '#B4BAC1',
+						contrastText: '#dde2d8'
+					},
+					error: {
+						main: '#af3723',
+					},
+					background: {
+						default: '#202020',
+						'contrast': '#dde2d8'
+					},
+				}
+				: {
+					// palette values for light mode
+					primary: {
+						main: '#292D3E',
+					},
+					secondary: {
+						main: '#CA896C',
+					},
+					text: {
+						primary: '#202020',
+						secondary: '#5C5C5C',
+						contrastText: '#dde2d8'
+					},
+					error: {
+						main: '#af3723',
+					},
+					background: {
+						default: '#dde2d8',
+						'contrast': '#202020'
+					},
+				})
+			},
+		});
+}
 
 
 

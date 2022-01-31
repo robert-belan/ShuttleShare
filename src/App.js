@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState, useMemo, createContext, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 import { 
+	Button,
 	ThemeProvider, 
 	createTheme, 
-	useTheme, 
 	Container, 
 	Box, 
 	CssBaseline, 
@@ -23,62 +23,72 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-import {darkTheme} from '/src/configs/themes';
-
-//https://stackoverflow.com/questions/59145165/change-root-background-color-with-material-ui-theme
-const theme = createTheme({
-	palette: {
-		type: 'dark',
-		primary: {
-			main: '#292D3E',
-		},
-		secondary: {
-			main: '#CA896C',
-		},
-		text: {
-			primary: '#dde2d8',
-			secondary: '#B4BAC1'
-		},
-		error: {
-			main: '#af3723',
-		},
-		background: {
-			default: "#202020"
-		},
-	},
-});
+// manages Dark/Light modes
+// source: https://mui.com/customization/dark-mode/#dark-mode-with-custom-palette
+import { getDesignTokens } from '/src/configs/themes';
+const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 
 export default function App() {
 
-	const t = useTheme();
+	const [mode, setMode] = useState('light');
 
+	const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 	const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
+	const colorMode = useMemo( () => ({
+		  toggleColorMode: () => {
+			setMode((prevMode) => 
+				prevMode === 'light' ? 'dark' : 'light'
+			);
+		  },
+		}), []
+	  );
+
+	useEffect(() => {
+		const message = theme.palette.mode === 'dark'
+		? 'Hello darkness my old friend...'
+		: 'Let there be light.';
+
+		return toast( message, {
+			duration: 3000,
+			position: 'bottom-center',
+			style: {
+				backgroundColor: theme.palette.background.default,
+				color: theme.palette.text.primary,
+				border: `1px solid ${theme.palette.secondary.main}`
+			},
+			id: 'theme',
+		});
+	}, [mode])
+	
 	return (
 		<>
-			<ThemeProvider theme={theme}>
-				<CssBaseline />
-				<Toaster />
-				<BrowserRouter>
+			<ColorModeContext.Provider value={colorMode}>
+				<ThemeProvider theme={theme}>
+					<CssBaseline />
+					<Toaster />
+					<BrowserRouter>
 
-					<Box sx={{ mt: matches ? 2 : 5 }}>
-						<Container>
-							
-							<Header />
-							<Routes>
-								<Route path="/" element={<Dashboard />} />
-								<Route path="/about" element={<About />} />
-								<Route path="/settings" element={<Settings />} />
-								<Route path="*" element={<NotFound />} />   {/* Catch-all route */}								
-							</Routes>
-							<Footer />
+						<Box sx={{ mt: matches ? 2 : 5 }}>
+							<Container>
+								
+								<Header />
+								<Routes>
+									<Route path="/" element={<Dashboard />} />
+									<Route path="/about" element={<About />} />
+									<Route path="/settings" element={<Settings modeToggle={colorMode.toggleColorMode} />} />
+									<Route path="*" element={<NotFound />} />   {/* Catch-all route */}
+								</Routes>
 
-						</Container>
-					</Box>
+								<Footer  />
 
-				</BrowserRouter>
-			</ThemeProvider>
+							</Container>
+						</Box>
+
+					</BrowserRouter>
+				</ThemeProvider>
+			</ColorModeContext.Provider>
 		</>
 	);
 }
