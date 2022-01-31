@@ -8,21 +8,24 @@ import {
 	DialogActions,
 	DialogContent,
 	DialogContentText,
-	DialogTitle
+	DialogTitle,
+	useTheme,
 } from '@mui/material';
+
+
 
 import { db } from '../firebaseConfig';
 import { child, push, set, remove } from 'firebase/database';
-
-import { useTheme  } from '@mui/material';
-
-
 
 const initialState = {
 	firstName: "",
 	lastName: "",
 	birthDate: "",
-	superPower: ""
+	superPower: "",
+	rent: "",
+	returned: "",
+	note: ""
+
 }
 
 export default function AddAstronaut(props) {
@@ -36,12 +39,15 @@ export default function AddAstronaut(props) {
 				firstName: props.rowData.colFN,
 				lastName: props.rowData.colLN,
 				birthDate: props.rowData.colB,
-				superPower: props.rowData.colS
+				superPower: props.rowData.colS,
+				rent: props.rowData.colRt,
+				returned: props.rowData.colRtnd,
+				note: props.rowData.colNt
 			});
 		}
 	}, []);
 
-	const { firstName, lastName, birthDate, superPower } = state;
+	const { firstName, lastName, birthDate, superPower, rent, returned, note } = state;
 
 	const mode = props.mode;
 	const id = props.rowData.id;
@@ -56,7 +62,7 @@ export default function AddAstronaut(props) {
 	function handleSubmit(event) {
 		event.preventDefault();
 
-		if ( mode !== "remove" && (!firstName || !lastName || !birthDate || !superPower)) {
+		if ( mode !== "remove" && (!firstName || !lastName || !birthDate || !superPower || !rent) ) {
 			toast.error("I need to know everything. \nNames, birth and particularly superpower!");
 		
 		} else if (mode === "add") {
@@ -88,7 +94,7 @@ export default function AddAstronaut(props) {
 		texts = {
 			toastNotif: "[Added] Welcome on the board.",
 			title: "Add astronaut",
-			contentText: "Here you can ADD a new astronaut.",
+			// contentText: "Here you can ADD a new astronaut.",
 			action: <span style={{color: theme.palette.primary.contrastText}}>Add</span>,
 			cancelAction: <span style={{color: theme.palette.primary.light}}>Cancel</span>
 		}
@@ -98,7 +104,7 @@ export default function AddAstronaut(props) {
 		texts = {
 			toastNotif: "[Updated] Life is change.",
 			title: "Edit astronaut",
-			contentText: "Here you can UPDATE selected astronaut.",
+			// contentText: "Here you can UPDATE selected astronaut.",
 			action: <span style={{color: theme.palette.primary.contrastText}}>Update</span>,
 			cancelAction: <span style={{color: theme.palette.primary.light}}>Cancel</span>
 		}
@@ -149,9 +155,9 @@ export default function AddAstronaut(props) {
 		<div>
 			<Dialog open={props.open} onClose={props.close} sx={dialogSx}>
 				
-				<DialogTitle>{texts.title}</DialogTitle>				
+				<DialogTitle sx={{mb: 2}}>{texts.title}</DialogTitle>				
 				<DialogContent>
-					<DialogContentText>{texts.contentText}</DialogContentText>
+					{ mode === "remove" && <DialogContentText>{texts.contentText}</DialogContentText>}
 										
 					<form id="newAstroForm" noValidate autoComplete="off" onSubmit={handleSubmit}>
 						{ mode !== "remove" && 
@@ -206,6 +212,46 @@ export default function AddAstronaut(props) {
 								id="superPower"
 								name="superPower"
 								label="Superpower"
+								type="text"
+								inputProps={{ maxLength: 50 }}
+								fullWidth
+								variant="standard"
+								required
+							/>							
+							<TextField
+								value={rent}
+								onChange={handleInputChange}
+								margin="dense"
+								id="rent"
+								name="rent"
+								label="Rent"
+								type="date"
+								InputLabelProps={{ shrink: true }}
+								inputProps={{ min: "1903-01-02", max: (new Date).toISOString().substring(0, 10) }}
+								fullWidth
+								variant="standard"
+								required
+							/>
+							<TextField
+								value={returned}
+								onChange={handleInputChange}
+								margin="dense"
+								id="returned"
+								name="returned"
+								label="Returned"
+								type="date"
+								InputLabelProps={{ shrink: true }}
+								inputProps={{ min: "1903-01-02", max: (new Date).toISOString().substring(0, 10) }}
+								fullWidth
+								variant="standard"
+							/>
+							<TextField
+								value={note}
+								onChange={handleInputChange}
+								margin="dense"
+								id="note"
+								name="note"
+								label="Note"
 								type="text"
 								inputProps={{ maxLength: 140 }}
 								fullWidth

@@ -53,7 +53,7 @@ function Dashboard() {
 
     return (
         <>
-            <Typography sx={{ my: 4 }} variant="h3" align={matches ? "right" : "center"}>Dashboard</Typography>
+            <Typography sx={{ my: 4 }} variant="h3" align="center">Dashboard</Typography>
 
             <ClickAwayListener onClickAway={() => {
                 setSelectionModel([]);

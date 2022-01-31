@@ -10,8 +10,8 @@ export default function Footer() {
             justifyContent={"space-between"} 
             sx={{mt: 3}}>
             
-            <Typography variant="caption" color={theme.palette.primary.dark}>2022 © Robert Belan</Typography>
-            <Typography variant="caption" color={theme.palette.primary.dark}>[Kontakt]</Typography>
+            <Typography variant="caption" color={'text.contrastText'}>2022 © Robert Belan</Typography>
+            <Typography variant="caption" color={'text.contrastText'}>Kontakt</Typography>
         </Stack>
 	);
 }

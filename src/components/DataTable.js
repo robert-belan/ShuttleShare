@@ -7,11 +7,14 @@ function DataTable(props) {
 
     // Legend: colFN - columnFirstName etc.
     const columns = [
-        { field: 'colN', headerName: '#', width: 5 },
-        { field: 'colFN', headerName: 'First Name', flex: 1 },
-        { field: 'colLN', headerName: 'Last Name', flex: 1 },
-        { field: 'colB', headerName: 'Birthday', flex: 1, type: 'date', valueGetter: ({ value }) => value && new Date(value) },
-        { field: 'colS', headerName: 'Superpower', flex: 1 },
+        { field: 'colN', headerAlign: 'center', align:'center', headerName: '#', width: 5 },
+        { field: 'colFN', headerAlign: 'left', align:'left', headerName: 'First Name', flex: 1 },
+        { field: 'colLN', headerAlign: 'left', align:'left', headerName: 'Last Name', flex: 1 },
+        { field: 'colB', headerAlign: 'left', align:'left', headerName: 'Birthday', flex: 1, type: 'date', valueGetter: ({ value }) => value && new Date(value) },
+        { field: 'colS', headerAlign: 'left', align:'left', headerName: 'Superpower', flex: 1 },
+        { field: 'colRt', headerAlign: 'right', align:'right', headerName: 'Rent', flex: 1, type: 'date', valueGetter: ({ value }) => value && new Date(value)  },
+        { field: 'colRtnd', headerAlign: 'right', align:'right', headerName: 'Returned', flex: 1, type: 'date', valueGetter: ({ value }) => value && new Date(value)  },
+        { field: 'colNt', headerAlign: 'right', align:'right', headerName: 'Note', flex: 1 },
     ];
     
     const rows = Object.entries(dataset).map( ([id, values], index) => {
@@ -21,11 +24,15 @@ function DataTable(props) {
             colFN: values.firstName,
             colLN: values.lastName,
             colB: values.birthDate,
-            colS: values.superPower
+            colS: values.superPower,
+            colRt: values.rent,
+            colRtnd: values.returned,
+            colNt: values.note
         };
     });
     
     const sx = {
+        width: 'auto',
         color: 'text.primary',
         border: 0,
         '& .MuiDataGrid-row': {
@@ -50,11 +57,11 @@ function DataTable(props) {
     }
 
     return (
-        <div style={{ flexGrow: 1 }}>
             <DataGrid 
                 rows={rows} 
                 columns={columns}
-                rowHeight={40} 
+                rowHeight={40}
+                density='standard'
                 autoHeight={true} 
                 hideFooter={true} 
                 disableColumnMenu={true}
@@ -66,7 +73,7 @@ function DataTable(props) {
                 headerAlign="center"
                 sx={sx}
             />
-        </div>
+
     );
 }
 

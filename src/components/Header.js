@@ -35,7 +35,7 @@ export default function Header() {
                         >
                         <Button component={RouterLink} to="/">Dashboard</Button>
                         <Button component={RouterLink} to="/about">About</Button>
-                        <Button component={RouterLink} to="/help">Help</Button>
+                        <Button component={RouterLink} to="/settings">Settings</Button>
                     </ButtonGroup>
     
                 </Stack>
