@@ -26,7 +26,7 @@ import '@fontsource/roboto/700.css';
 // manages Dark/Light modes
 // source: https://mui.com/customization/dark-mode/#dark-mode-with-custom-palette
 import { getDesignTokens } from '/src/configs/themes';
-const ColorModeContext = createContext({ toggleColorMode: () => {} });
+const ColorModeContext = createContext({ toggleColorMode });
 
 
 export default function App() {
