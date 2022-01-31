@@ -7,6 +7,9 @@ import toast from 'react-hot-toast';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Box from '@mui/material/Box';
 import DataTable from '../components/DataTable';
+import { ButtonGroup, Stack, Typography } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 function Dashboard() {
 
@@ -15,15 +18,19 @@ function Dashboard() {
 
     // Controls dialog window
     const [open, setOpen] = useState(false);
-    const [mode, setMode ] = useState(null);
+    const [mode, setMode] = useState(null);
     const [selectionModel, setSelectionModel] = useState([]);
     const [selectedRow, setSelectedRow] = useState({});
+
+    // Style
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
 
     //* Get data. 
     useEffect(() => {
-        onValue( db, ( snapshot ) => {
-            if ( snapshot.exists() ) {
+        onValue(db, (snapshot) => {
+            if (snapshot.exists()) {
                 setDataset(snapshot.val()); //! implementovat moznost, ze tam nebude zadny zaznam - nahodit nejakou hlasku
             } else {
                 toast.error("Empty database.")
@@ -46,34 +53,71 @@ function Dashboard() {
 
     return (
         <>
-            <h1>Dashboard</h1>
+            <Typography sx={{ my: 4 }} variant="h3" align={matches ? "right" : "center"}>Dashboard</Typography>
 
             <ClickAwayListener onClickAway={() => {
                 setSelectionModel([]);
                 setSelectedRow({});
-                }} >
-                
-                <Box>
+            }} >
+
+                <Box sx={{ align: "center" }}>
                     {/* first "open" leads to conditional rendering  */}
                     {/* props "open" controls dialog opening */}
-                    {open && <AddAstronaut 
-                        open={open} 
-                        close={handleDialogClose} 
-                        rowData={selectedRow} 
-                        mode={mode} 
-                        /> }
+                    {open && <AddAstronaut
+                        open={open}
+                        close={handleDialogClose}
+                        rowData={selectedRow}
+                        mode={mode}
+                    />}
 
-                    <Button variant="outlined" onClick={() => {handleDialogOpen("add")}}>
-                        Add
-                    </Button>
-                    <Button variant="outlined" onClick={() => handleDialogOpen("edit")} disabled={!selectedRow.id}>
-                        Edit
-                    </Button>
-                    <Button variant="outlined" onClick={() => handleDialogOpen("remove")} disabled={!selectedRow.id}>
-                        Remove Astronaut
-                    </Button>
+                    <DataTable
+                        dataset={dataset}
+                        setSelectionModel={setSelectionModel}
+                        setSelectedRow={setSelectedRow}
+                        selectionModel={selectionModel}
+                    />
 
-                    <DataTable dataset={dataset} setSelectionModel={setSelectionModel} setSelectedRow={setSelectedRow} selectionModel={selectionModel} />
+                    <Stack
+                        direction="row"
+                        justifyContent="center"
+                        sx={{
+                            my: 4,
+                        }}
+                    >
+                        <Button
+                            onClick={() => handleDialogOpen("remove")}
+                            disabled={!selectedRow.id}
+                            color='secondary'
+                            sx={{ 
+                                mr: 2,
+                                '&.Mui-disabled': {
+                                    color: 'text.disabled'
+                                }
+                            }}
+                        >
+                            Remove
+                        </Button>
+                        <ButtonGroup
+                            size="small"
+                            variant="contained"
+                        >
+                            <Button
+                                onClick={() => handleDialogOpen("edit")}
+                                disabled={!selectedRow.id}
+                            >
+                                Edit
+                            </Button>
+                            <Button
+                                onClick={() => { handleDialogOpen("add") }}
+                            >
+                                Add astronaut
+                            </Button>
+
+                        </ButtonGroup>
+
+                    </Stack>
+
+
                 </Box>
             </ClickAwayListener>
 

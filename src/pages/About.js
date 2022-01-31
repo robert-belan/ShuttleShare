@@ -1,7 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Typography } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 function About() {
-    return ( <h1>About</h1> );
+
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
+    return (
+        <Typography sx={{my: 4}} variant="h3" align={matches ? "right" : "center"}>About</Typography>
+    );
 }
 
 export default About;

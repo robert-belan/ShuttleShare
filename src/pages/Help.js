@@ -1,8 +1,16 @@
-import React, { useState, useEffect } from 'react';
-
+import React from 'react';
+import { Typography } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 function NeedHelp() {
-    return ( <h1>Need help?</h1> );
+    
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('sm'));
+    
+    return (
+        <Typography sx={{my: 4}} variant="h3" align={matches ? "right" : "center"}>Need help?</Typography>
+    );
 }
 
 export default NeedHelp;

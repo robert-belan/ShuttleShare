@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import toast from 'react-hot-toast';
+
+import {
+	Button,
+	TextField,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogContentText,
+	DialogTitle
+} from '@mui/material';
+
 import { db } from '../firebaseConfig';
 import { child, push, set, remove } from 'firebase/database';
+
+import { useTheme  } from '@mui/material';
 
 
 
@@ -22,6 +28,7 @@ const initialState = {
 export default function AddAstronaut(props) {
 
 	const [state, setState] = useState(initialState);
+	const theme = useTheme();
 
 	useEffect(() => {
 		if ( mode === "edit") {
@@ -82,8 +89,8 @@ export default function AddAstronaut(props) {
 			toastNotif: "[Added] Welcome on the board.",
 			title: "Add astronaut",
 			contentText: "Here you can ADD a new astronaut.",
-			action: <span style={{color: "green"}}>Add</span>,
-			cancelAction: "Cancel"
+			action: <span style={{color: theme.palette.primary.contrastText}}>Add</span>,
+			cancelAction: <span style={{color: theme.palette.primary.light}}>Cancel</span>
 		}
 	}
 
@@ -92,8 +99,8 @@ export default function AddAstronaut(props) {
 			toastNotif: "[Updated] Life is change.",
 			title: "Edit astronaut",
 			contentText: "Here you can UPDATE selected astronaut.",
-			action: <span style={{color: "green"}}>Update</span>,
-			cancelAction: "Cancel"
+			action: <span style={{color: theme.palette.primary.contrastText}}>Update</span>,
+			cancelAction: <span style={{color: theme.palette.primary.light}}>Cancel</span>
 		}
 	}
 
@@ -103,14 +110,44 @@ export default function AddAstronaut(props) {
 			title: "Remove astronaut",
 			contentText: "Do you really want to REMOVE this astronaut?",
 			action: <span style={{color: "red"}}>Yes, remove!</span>,
-			cancelAction: "God, no!"
+			cancelAction: <span style={{color: theme.palette.primary.light}}>"God, no!"</span>
 		}
 	}
 
+	const dialogSx = {
+		'& .MuiDialog-paper' : {
+			backgroundColor: 'background.default',
+			color: 'text.primary'
+		},
+		'& .MuiDialogTitle-root': {
+			backgroundColor: 'primary.dark'
+		},
+		'& .MuiInputLabel-root': {
+
+		}
+	}
+
+	const textFieldSx = {
+		'& .MuiInputLabel-root': {
+			color: 'text.primary',
+			'&.Mui-focused': {
+				color: 'red'
+			}
+		},
+		'& .MuiInput-root': {
+			backgroundColor: "red",
+			'&.Mui-focusVisible, &.Mui-selected': {
+				color: 'primary.light'
+			},
+			'&::after': {
+				borderBottom: 'red'
+			},
+		}
+	}
 
 	return (
 		<div>
-			<Dialog open={props.open} onClose={props.close}>
+			<Dialog open={props.open} onClose={props.close} sx={dialogSx}>
 				
 				<DialogTitle>{texts.title}</DialogTitle>				
 				<DialogContent>
@@ -128,9 +165,10 @@ export default function AddAstronaut(props) {
 								name="firstName"
 								label="First Name"
 								type="text"
+								InputLabelProps={{ shrink: true }}
 								inputProps={{ maxLength: 50 }}
 								fullWidth
-								variant="outlined"
+								variant="standard"
 								required
 							/>
 							<TextField
@@ -141,9 +179,10 @@ export default function AddAstronaut(props) {
 								name="lastName"
 								label="Last Name"
 								type="text"
+								InputLabelProps={{ shrink: true }}
 								inputProps={{ maxLength: 50 }}
 								fullWidth
-								variant="outlined"
+								variant="standard"
 								required
 							/>
 							<TextField
@@ -154,9 +193,10 @@ export default function AddAstronaut(props) {
 								name="birthDate"
 								label="Birth Date"
 								type="date"
+								InputLabelProps={{ shrink: true }}
 								inputProps={{ min: "1903-01-02", max: (new Date).toISOString().substring(0, 10) }}
 								fullWidth
-								variant="outlined"
+								variant="standard"
 								required
 							/>
 							<TextField
@@ -169,7 +209,7 @@ export default function AddAstronaut(props) {
 								type="text"
 								inputProps={{ maxLength: 140 }}
 								fullWidth
-								variant="outlined"
+								variant="standard"
 								required
 							/>
 							</div>

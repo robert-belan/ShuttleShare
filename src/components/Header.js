@@ -1,35 +1,44 @@
 import React from 'react';
 import {Link as RouterLink} from 'react-router-dom';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Divider from '@mui/material/Divider';
+import { ButtonGroup, Divider, Stack, Button } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme  } from '@mui/material/styles';
+
 
 export default function Header() {
 
+    const theme = useTheme();
+	const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
     return (<>
-            <Box sx={{
-                px: 5,
-                m: 5,
-                border: "1px solid #96bec3",
-                borderRadius: "3px",
-                height: '10vh',
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-            }}>
-                <Button component={RouterLink} to="/" variant="outlined">Headquarters</Button>                
                 <Stack 
-                    direction="row" 
-                    spacing={2}
+                    direction={ {xs: "column", sm: "column", md: "row", lg: "row", xl: "row"} } 
+                    spacing={ {xs: 2, sm: 2} }
                     divider={<Divider orientation="vertical" flexItem />}
-                    justifyContent="center"
+                    justifyContent={matches ? "space-between" : "center"}
                     alignItems="center"
                 >
-                    <Button component={RouterLink} to="/" variant="outlined">Dashboard</Button>
-                    <Button component={RouterLink} to="/about" variant="outlined">About App</Button>
-                    <Button component={RouterLink} to="/help" variant="outlined">Help</Button>
+                    <Button 
+                        component={RouterLink} 
+                        to="/" 
+                        variant=""
+                        >
+                            ShuttleShare</Button>
+                            
+                        
+                    <ButtonGroup 
+                        size="medium" 
+                        disableRipple={true} 
+                        fullWidth={matches ? false : true}
+                        variant="outlined"
+                        color="secondary"
+                        >
+                        <Button component={RouterLink} to="/">Dashboard</Button>
+                        <Button component={RouterLink} to="/about">About</Button>
+                        <Button component={RouterLink} to="/help">Help</Button>
+                    </ButtonGroup>
+    
                 </Stack>
-            </Box>
+
     </>)
 }
