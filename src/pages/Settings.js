@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 
 
 function Settings(props) {
-    
+
     const theme = useTheme();
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 

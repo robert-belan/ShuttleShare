@@ -27,7 +27,7 @@ import '@fontsource/roboto/700.css';
 import { getDesignTokens } from '/src/configs/themes';
 
 export default function App() {
-
+	
 	const [mode, setMode] = useState( () => {
 		if (localStorage.getItem("theme")) {
 			return localStorage.getItem("theme");
