@@ -1,8 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+// const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
-const isDevelopment = process.env.NODE_ENV !== 'production';
+// const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   entry: {
@@ -17,7 +17,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-react', '@babel/preset-env'],
-            plugins: ['@babel/plugin-transform-runtime', isDevelopment && require.resolve('react-refresh/babel')].filter(Boolean),
+            plugins: ['@babel/plugin-transform-runtime'],
           },
         },
       },
@@ -32,7 +32,7 @@ module.exports = {
       title: 'Astronauts Everywhere',
       template: path.resolve(__dirname, './public/index.html'),
     }),
-    isDevelopment && new ReactRefreshWebpackPlugin(),
+
   ],
   output: {
     filename: '[name].bundle.js',
