@@ -22,7 +22,8 @@ export function getDesignTokens(mode) {
 					},
 					background: {
 						default: '#202020',
-						'contrast': '#dde2d8'
+						contrast: '#dde2d8',
+						dark: '#202020'
 					},
 				}
 				: {
@@ -43,7 +44,8 @@ export function getDesignTokens(mode) {
 					},
 					background: {
 						default: '#dde2d8',
-						'contrast': '#202020'
+						contrast: '#202020',
+						dark: '#202020'
 					},
 				})
 			},

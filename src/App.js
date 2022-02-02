@@ -1,9 +1,8 @@
-import React, { useState, useMemo, createContext, useEffect } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 import { 
-	Button,
 	ThemeProvider, 
 	createTheme, 
 	Container, 
@@ -26,45 +25,26 @@ import '@fontsource/roboto/700.css';
 // manages Dark/Light modes
 // source: https://mui.com/customization/dark-mode/#dark-mode-with-custom-palette
 import { getDesignTokens } from '/src/configs/themes';
-const ColorModeContext = createContext({ toggleColorMode });
-
 
 export default function App() {
 
-	const [mode, setMode] = useState('light');
+	const [mode, setMode] = useState( () => {
+		if (localStorage.getItem("theme")) {
+			return localStorage.getItem("theme");
+		} else {
+			return 'light';
+		}
+	} );
+		
+	useEffect( () => {
+		localStorage.setItem("theme", mode);
+	}, [mode])
 
 	const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 	const matches = useMediaQuery(theme.breakpoints.down('sm'));
-
-	const colorMode = useMemo( () => ({
-		  toggleColorMode: () => {
-			setMode((prevMode) => 
-				prevMode === 'light' ? 'dark' : 'light'
-			);
-		  },
-		}), []
-	  );
-
-	useEffect(() => {
-		const message = theme.palette.mode === 'dark'
-		? 'Hello darkness my old friend...'
-		: 'Let there be light.';
-
-		return toast( message, {
-			duration: 3000,
-			position: 'bottom-center',
-			style: {
-				backgroundColor: theme.palette.background.default,
-				color: theme.palette.text.primary,
-				border: `1px solid ${theme.palette.secondary.main}`
-			},
-			id: 'theme',
-		});
-	}, [mode])
 	
 	return (
 		<>
-			<ColorModeContext.Provider value={colorMode}>
 				<ThemeProvider theme={theme}>
 					<CssBaseline />
 					<Toaster />
@@ -77,7 +57,7 @@ export default function App() {
 								<Routes>
 									<Route path="/" element={<Dashboard />} />
 									<Route path="/about" element={<About />} />
-									<Route path="/settings" element={<Settings modeToggle={colorMode.toggleColorMode} />} />
+									<Route path="/settings" element={<Settings handleThemeToggle={setMode} />} />
 									<Route path="*" element={<NotFound />} />   {/* Catch-all route */}
 								</Routes>
 
@@ -88,7 +68,6 @@ export default function App() {
 
 					</BrowserRouter>
 				</ThemeProvider>
-			</ColorModeContext.Provider>
 		</>
 	);
 }
