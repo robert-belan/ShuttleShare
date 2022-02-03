@@ -1,0 +1,80 @@
+{
+    "contact": "Contact",
+    "dashboard_mainHeader": "Dashboard",
+
+    "nav_dashboard": "Dashboard",
+    "nav_about": "About",
+    "nav_settings": "Settings",
+
+    "table_headers_col1": "First Name",
+    "table_headers_col2": "Last Name",
+    "table_headers_col3": "Day of Birth",
+    "table_headers_col4": "Superpower",
+    "table_headers_col5": "Borrowed",
+    "table_headers_col6": "Returned",
+    "table_headers_col7": "Note",
+    "table_row_show": "show",
+
+    "table_controls_remove": "remove",
+    "table_controls_edit": "edit",
+    "table_controls_add": "add astronaut",
+
+    "footer_contacts_email": "Please, first contact by e-mail.",
+
+
+    "add_astronaut_toast": "[Added] Welcome on the board.",
+    "add_astronaut_title": "Add astronaut",
+    "add_astronaut_action": "Add",
+    "add_astronaut_close": "Cancel",
+
+    "edit_astronaut_toast": "[Updated] Life is change.",
+    "edit_astronaut_title": "Edit astronaut",
+    "edit_astronaut_action": "Update",
+    "edit_astronaut_close": "Cancel",
+
+    "remove_astronaut_toast": "[Removed] It was an honor to serve with you.",
+    "remove_astronaut_title": "Remove astronaut",
+    "remove_astronaut_contentText": "Do you really want to REMOVE this astronaut?",
+    "remove_astronaut_action": "Yes, remove!",
+    "remove_astronaut_close": "God, no!",
+
+
+    "about_mainHeader": "About",
+    "about_subHeader": "ShareShuttle - Know who got your shuttle dirty",
+    "about_description": "This application is used for simple management of rented shuttles.",
+    "about_instruction": "Make a record of each shuttle rental. Provide the following information for each tenant astronaut (hereinafter referred to just as the astronaut).",
+    
+
+    "instruction_firstName_title": "First name",
+    "instruction_firstName_desc": " - maximum number of characters 50.",
+    "instruction_lastName_title": "Last name",
+    "instruction_lastName_desc": " - maximum number of characters 50.",
+    "instruction_birth_title": "Date of birth",
+    "instruction_birth_desc": " - enter the date in the prescribed format. You will see the format in the box where you enter the date.",
+    "instruction_superpower_title": "Superpower",
+    "instruction_superpower_desc": " - state the superpower that the person has - maximum number of characters 50.",
+    "instruction_borrowed_title": "Borrowed",
+    "instruction_borrowed_desc": " - enter the date in the prescribed format. You will see the format in the box where you enter the date.",
+    "instruction_returned_title": "Returned",
+        "instruction_returned_desc1": " - if the shuttle is not returned, ",
+        "instruction_returned_desc2": "leave the box blank",
+        "instruction_returned_desc3": ", otherwise it will not allow you to save the record.",
+
+    "instruction_note_title": "Note",
+    "instruction_note_desc": " - optional - includes anything you think doesn't belong elsewhere. save the record.",
+
+
+    "disclaimer_title": "Disclaimer:",
+    "disclaimer_description": "The figures given are fictitious. Except for Elvis.",
+
+    
+    "settings_mainHeader": "Settings",
+    "theme_title_dark": "Dark",
+    "theme_title_light": "Light",
+    "settings_themeToggle_part1": "Turn on ",
+    "settings_themeToggle_part2": " theme",
+    "toast_theme_dark": "'Hello darkness my old friend...'",
+    "toast_theme_light": "'Let there be light...'",
+
+    "language_option": "You can select prefered language "
+}

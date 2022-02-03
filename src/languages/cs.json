@@ -1,0 +1,82 @@
+{
+    "contact": "Kontakt",
+    "dashboard_mainHeader": "Hlavní strana",
+
+    "nav_dashboard": "Hlavní strana",
+    "nav_about": "O aplikaci",
+    "nav_settings": "Nastavení",
+
+    "table_headers_col1": "Jméno",
+    "table_headers_col2": "Příjmení",
+    "table_headers_col3": "Narozen",
+    "table_headers_col4": "Superschopnost",
+    "table_headers_col5": "Zapůjčil",
+    "table_headers_col6": "Vrátil",
+    "table_headers_col7": "Poznámka",
+    "table_row_show": "zobrazit",
+
+    "table_controls_remove": "smazat",
+    "table_controls_edit": "upravit",
+    "table_controls_add": "přidat astronauta",
+
+    "footer_contacts_email": "Prosím, první kontakt e-mailem.",
+
+
+    "add_astronaut_toast": "[Přidán] Vítej na palubě.",
+    "add_astronaut_title": "Přidat astronauta",
+    "add_astronaut_action": "Přidat",
+    "add_astronaut_close": "Uzavřít",
+
+    "edit_astronaut_toast": "[Upraven] Život je změna",
+    "edit_astronaut_title": "Upravit astronauta",
+    "edit_astronaut_action": "Upravit",
+    "edit_astronaut_close": "Uzavřít",
+
+    "remove_astronaut_toast": "[Vymazán] Bylo nám ctí s tebou sloužit",
+    "remove_astronaut_title": "Vymazat",
+    "remove_astronaut_contentText": "Opravdu chcete astronauta vymazat?",
+    "remove_astronaut_action": "Ano, prosím!",
+    "remove_astronaut_close": "Bože, ne!",
+
+
+    "about_mainHeader": "O aplikaci",
+    "about_subHeader": "ShareShuttle - Zjisti, kdo zašpinil tvůj raketoplán",
+    "about_description": "Tato aplikace slouží pro orientační správu zapůjčených raketoplánů.",
+    "about_instruction": "O každém zapůjčení raketoplánu vytvořte záznam. Ke každému nájemníku astronautovi (dále jen astronautovi) uveďte následující údaje.",
+    
+
+    "instruction_firstName_title": "Jméno",
+    "instruction_firstName_desc": " - maximální počet znaků 50.",
+    "instruction_lastName_title": "Příjmení",
+    "instruction_lastName_desc": " - maximální počet znaků 50.",
+    "instruction_birth_title": "Datum narození",
+    "instruction_birth_desc": " - uveďte datum v předepsaném formátu. Formát uvidíte v kolonce, kde zadáváte datum.",
+    "instruction_superpower_title": "Superschopnost",
+    "instruction_superpower_desc": " - uveďte superschopnost, kterou osoba vlastní - maximální počet znaků 50.",
+    "instruction_borrowed_title": "Zapůjčeno",
+    "instruction_borrowed_desc": " - uveďte datum v předepsaném formátu. Formát uvidíte v kolonce, kde zadáváte datum.",
+    "instruction_returned_title": "Vráceno",
+        "instruction_returned_desc1": " - pokud raketoplán není vrácený, ",
+        "instruction_returned_desc2": "nechte kolonku prázdnou",
+        "instruction_returned_desc3": ", jinak Vám to nedovolí záznam uložit.",
+
+    "instruction_note_title": "Poznámka",
+    "instruction_note_desc": " - nepovinné - zde patří cokoliv, co usoudíte, že nepatří jinam.",
+
+
+    "disclaimer_title": "Zřeknutí se odpovědnosti:",
+    "disclaimer_description": "Údaje zde uvedené neberte vážně. Až na Elvise jsou veškeré údaje smyšlené.",
+
+
+
+    "settings_mainHeader": "Nastavení",
+    "theme_title_dark": "Tmavý",
+    "theme_title_light": "Světlý",
+    "settings_themeToggle_part1": "Zapnout ",
+    "settings_themeToggle_part2": " režim",
+    "toast_theme_dark": "'Hello darkness my old friend...'",
+    "toast_theme_light": "'Budiž světlo...'",
+    
+
+    "language_option": "Zvolte si jazyk "
+}

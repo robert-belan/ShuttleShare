@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
+import Text from '../components/Text';
 
 import {
 	Button,
@@ -92,31 +93,31 @@ export default function AddAstronaut(props) {
 
 	if (mode === "add") {
 		texts = {
-			toastNotif: "[Added] Welcome on the board.",
-			title: "Add astronaut",
+			toastNotif: <Text tid={"add_astronaut_toast"} />,
+			title: <Text tid={"add_astronaut_title"} />,
 			// contentText: "Here you can ADD a new astronaut.",
-			action: <span style={{color: theme.palette.background.contrast}}>Add</span>,
-			cancelAction: <span style={{color: theme.palette.background.contrast}}>Cancel</span>
+			action: <span style={{color: theme.palette.background.contrast}}><Text tid={"add_astronaut_action"} /></span>,
+			cancelAction: <span style={{color: theme.palette.background.contrast}}><Text tid={"add_astronaut_close"} /></span>
 		}
 	}
 
 	if (mode === "edit") {
 		texts = {
-			toastNotif: "[Updated] Life is change.",
-			title: "Edit astronaut",
+			toastNotif: <Text tid={"edit_astronaut_toast"} />,
+			title: <Text tid={"edit_astronaut_title"} />,
 			// contentText: "Here you can UPDATE selected astronaut.",
-			action: <span style={{color: theme.palette.background.contrast}}>Update</span>,
-			cancelAction: <span style={{color: theme.palette.background.contrast}}>Cancel</span>
+			action: <span style={{color: theme.palette.background.contrast}}><Text tid={"edit_astronaut_action"} /></span>,
+			cancelAction: <span style={{color: theme.palette.background.contrast}}><Text tid={"edit_astronaut_close"} /></span>
 		}
 	}
 
 	if (mode === "remove") {
 		texts = {
-			toastNotif: "[Removed] It was an honor to serve with you.",
-			title: "Remove astronaut",
-			contentText: "Do you really want to REMOVE this astronaut?",
-			action: <span style={{color: theme.palette.warning.main}}>Yes, remove!</span>,
-			cancelAction: <span style={{color: theme.palette.background.contrast}}>God, no!</span>
+			toastNotif: <Text tid={"remove_astronaut_toast"} />,
+			title: <Text tid={"remove_astronaut_title"} />,
+			contentText: <Text tid={"remove_astronaut_contentText"} />,
+			action: <span style={{color: theme.palette.warning.main}}><Text tid={"remove_astronaut_action"} /></span>,
+			cancelAction: <span style={{color: theme.palette.background.contrast}}><Text tid={"remove_astronaut_close"} /></span>
 		}
 	}
 
@@ -170,7 +171,7 @@ export default function AddAstronaut(props) {
 								margin="dense"
 								id="firstName"
 								name="firstName"
-								label="First Name"
+								label={<Text tid={"table_headers_col1"} />}
 								type="text"
 								InputLabelProps={{ shrink: true }}
 								inputProps={{ maxLength: 50 }}
@@ -184,7 +185,7 @@ export default function AddAstronaut(props) {
 								margin="dense"
 								id="lastName"
 								name="lastName"
-								label="Last Name"
+								label={<Text tid={"table_headers_col2"} />}
 								type="text"
 								InputLabelProps={{ shrink: true }}
 								inputProps={{ maxLength: 50 }}
@@ -198,7 +199,7 @@ export default function AddAstronaut(props) {
 								margin="dense"
 								id="birthDate"
 								name="birthDate"
-								label="Birth Date"
+								label={<Text tid={"table_headers_col3"} />}
 								type="date"
 								InputLabelProps={{ shrink: true }}
 								inputProps={{ min: "1903-01-02", max: (new Date).toISOString().substring(0, 10) }}
@@ -212,7 +213,7 @@ export default function AddAstronaut(props) {
 								margin="dense"
 								id="superPower"
 								name="superPower"
-								label="Superpower"
+								label={<Text tid={"table_headers_col4"} />}
 								type="text"
 								InputLabelProps={{ shrink: true }}
 								inputProps={{ maxLength: 50 }}
@@ -226,7 +227,7 @@ export default function AddAstronaut(props) {
 								margin="dense"
 								id="rent"
 								name="rent"
-								label="Rent"
+								label={<Text tid={"table_headers_col5"} />}
 								type="date"
 								InputLabelProps={{ shrink: true }}
 								inputProps={{ min: "1903-01-02", max: (new Date).toISOString().substring(0, 10) }}
@@ -240,7 +241,7 @@ export default function AddAstronaut(props) {
 								margin="dense"
 								id="returned"
 								name="returned"
-								label="Returned"
+								label={<Text tid={"table_headers_col6"} />}
 								type="date"
 								InputLabelProps={{ shrink: true }}
 								inputProps={{ min: "1903-01-02", max: (new Date).toISOString().substring(0, 10) }}
@@ -253,7 +254,7 @@ export default function AddAstronaut(props) {
 								margin="dense"
 								id="note"
 								name="note"
-								label="Note"
+								label={<Text tid={"table_headers_col7"} />}
 								type="text"
 								InputLabelProps={{ shrink: true }}
 								inputProps={{ maxLength: 140 }}

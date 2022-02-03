@@ -1,6 +1,7 @@
 import React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { Box, Button, Tooltip } from '@mui/material';
+import Text from '../components/Text';
 
 function DataTable(props) {
     
@@ -17,15 +18,15 @@ function DataTable(props) {
     // Legend: colFN - columnFirstName etc.
     const columns = [
         { field: 'colN', headerAlign: 'center', align:'center', headerName: '#', width: 5 },
-        { field: 'colFN', headerAlign: 'left', align:'left', headerName: 'First Name', flex: 1 },
-        { field: 'colLN', headerAlign: 'left', align:'left', headerName: 'Last Name', flex: 1 },
-        { field: 'colB', headerAlign: 'left', align:'left', headerName: 'Birthday', flex: 1, type: 'date', valueGetter: ({ value }) => value && new Date(value) },
-        { field: 'colS', headerAlign: 'left', align:'left', headerName: 'Superpower', flex: 1 },
-        { field: 'colRt', headerAlign: 'right', align:'right', headerName: 'Rent', flex: 1, type: 'date', valueGetter: ({ value }) => value && new Date(value)  },
-        { field: 'colRtnd', headerAlign: 'right', align:'right', headerName: 'Returned', flex: 1, type: 'date', valueGetter: ({ value }) => value && new Date(value)  },
-        { field: 'colNt', headerAlign: 'right', align:'right', headerName: 'Note', flex: 1, renderCell: 
+        { field: 'colFN', headerAlign: 'left', align:'left', headerName: <Text tid={"table_headers_col1"} />, flex: 1 },
+        { field: 'colLN', headerAlign: 'left', align:'left', headerName: <Text tid={"table_headers_col2"} />, flex: 1 },
+        { field: 'colB', headerAlign: 'left', align:'left', headerName: <Text tid={"table_headers_col3"} />, flex: 1, type: 'date', valueGetter: ({ value }) => value && new Date(value) },
+        { field: 'colS', headerAlign: 'left', align:'left', headerName: <Text tid={"table_headers_col4"} />, flex: 1 },
+        { field: 'colRt', headerAlign: 'right', align:'right', headerName: <Text tid={"table_headers_col5"} />, flex: 1, type: 'date', valueGetter: ({ value }) => value && new Date(value)  },
+        { field: 'colRtnd', headerAlign: 'right', align:'right', headerName: <Text tid={"table_headers_col6"} />, flex: 1, type: 'date', valueGetter: ({ value }) => value && new Date(value)  },
+        { field: 'colNt', headerAlign: 'right', align:'right', headerName: <Text tid={"table_headers_col7"} />, flex: 1, renderCell: 
             (params) => ( 
-                <Tooltip sx={tooltipSx} title={params.value} placement="left"><Button variant="text" color="secondary" size="small">show</Button></Tooltip>
+                <Tooltip sx={tooltipSx} title={params.value} placement="left"><Button variant="text" color="secondary" size="small"><Text tid={"table_row_show"} /></Button></Tooltip>
             ),
         },
     ];

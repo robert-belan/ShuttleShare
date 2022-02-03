@@ -11,6 +11,7 @@
   "author": "Robert Belan <info@robertbelan.com>",
   "license": "MIT",
   "dependencies": {
+    "@fontsource/inconsolata": "^4.5.1",
     "@mui/styles": "^5.3.0",
     "axios": "^0.25.0"
   },

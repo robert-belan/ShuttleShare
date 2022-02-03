@@ -1,44 +1,90 @@
 import React from 'react';
 import { List, Typography, useTheme } from '@mui/material';
+import Text from '../components/Text';
 
 function About() {
 
     const theme = useTheme();
 
-    return (<>
-        <Typography sx={{my: 4}} variant="h3" align="center">About</Typography>
+    return (
+        <>
+        <Typography sx={{my: 4}} variant="h3" align="center"><Text tid={"about_mainHeader"} /></Typography>
         
         {/* Content */}
         <Typography paragraph align="center" sx={{my: 4 , mb: 8, fontStyle: "italic"}}>
-            ShareShuttle - Know who got your shuttle dirty
+            <Text tid={"about_subHeader"} />
             </Typography>
 
         <Typography variant='h5' component="h5" paragraph sx={{my: 4 }}>
-            Tato aplikace slouží pro orientační správu zapůjčených raketoplánů.
+            <Text tid={"about_description"} />
             </Typography>
         
         <Typography paragraph>
-            O každém zapůjčení raketoplánu <span style={{color: 'error.primary'}}>vytvořte</span> záznam. Ke každému nájemníku astronautovi (dále jen astronautovi) uveďte následující údaje: 
+            <Text tid={"about_instruction"} />
             </Typography>
 
         <List sx={{listStyle: "disc", listStylePosition: "inside", my: 3}}>
-            <li><span style={{fontStyle: "italic"}}>Jméno</span> - maximální počet znaků 50.</li>
-            <li><span style={{fontStyle: "italic"}}>Příjmení</span> - maximální počet znaků 50.</li>
-            <li><span style={{fontStyle: "italic"}}>Datum narození</span> - uveďte datum v předepsaném formátu. Formát uvidíte v kolonce, kde zadáváte datum.</li>
-            <li><span style={{fontStyle: "italic"}}>Superschopnost</span> - uveďte superschopnost, kterou osoba vlastní - maximální počet znaků 50.</li>
-            <li><span style={{fontStyle: "italic"}}>Zapůjčeno</span> - uveďte datum v předepsaném formátu. Formát uvidíte v kolonce, kde zadáváte datum.</li>
-            <li><span style={{fontStyle: "italic"}}>Vráceno</span> - pokud raketoplán není vrácený, <Typography component='span' sx={{color: 'warning.main'}}> nechte kolonku prázdnou</Typography>, jinak Vám to nedovolí záznam uložit.</li>
-            <li><span style={{fontStyle: "italic"}}>Poznámka</span> - nepovinné - zde patří cokoliv, co usoudíte, že nepatří jinam.</li>
+            <li>
+                <span style={{fontStyle: "italic"}}>
+                    <Text tid={"instruction_firstName_title"} />
+                </span> 
+                    <Text tid={"instruction_firstName_desc"} />
+            </li>
+            
+            <li>
+                <span style={{fontStyle: "italic"}}>
+                    <Text tid={"instruction_lastName_title"} />
+                </span> 
+                    <Text tid={"instruction_lastName_desc"} />
+            </li>
+
+            <li>
+                <span style={{fontStyle: "italic"}}>
+                    <Text tid={"instruction_birth_title"} />
+                </span> <Text tid={"instruction_birth_desc"} />
+            </li>
+
+            <li>
+                <span style={{fontStyle: "italic"}}>
+                    <Text tid={"instruction_superpower_title"} />
+                </span> 
+                    <Text tid={"instruction_superpower_desc"} />
+            </li>
+
+            <li>
+                <span style={{fontStyle: "italic"}}>
+                    <Text tid={"instruction_borrowed_title"} />
+                </span> 
+                    <Text tid={"instruction_borrowed_desc"} />
+            </li>
+
+            <li>
+                <span style={{fontStyle: "italic"}}>
+                    <Text tid={"instruction_returned_title"} />
+                </span> 
+                    <Text tid={"instruction_returned_desc1"} />
+                <Typography component='span' sx={{color: 'warning.main'}}>
+                    <Text tid={"instruction_returned_desc2"} />
+                </Typography>
+                <Text tid={"instruction_returned_desc3"} />
+            </li>
+
+            <li>
+                <span style={{fontStyle: "italic"}}>
+                    <Text tid={"instruction_note_title"} />
+                </span>
+                    <Text tid={"instruction_note_desc"} />
+            </li>
         </List>
 
 
         {/* Dislaimer: */}
         <Typography variant='subtitle2' sx={{mt: 10, fontStyle: "italic"}}>
-            Disclaimer:
+           <Text tid={"disclaimer_title"} />
             </Typography>
 
-        <Typography paragraph>
-            Údaje zde uvedené neberte vážně. Až na Elvise jsou veškeré údaje smyšlené.
+        <Typography paragraph sx={{ mb: 5 }}>
+            <Text tid={"disclaimer_description"} />
             </Typography>
     </>);
 }

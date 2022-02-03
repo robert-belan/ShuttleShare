@@ -2,6 +2,7 @@ import React from 'react';
 import {NavLink, Link as RouterLink} from 'react-router-dom';
 import { ButtonGroup, Stack, Button, useMediaQuery } from '@mui/material';
 import { useTheme, makeStyles } from '@mui/styles';
+import Text from '../components/Text';
 
 const useStyles = makeStyles({
     button: {
@@ -37,11 +38,11 @@ export default function Header() {
                         fullWidth={matches ? false : true}
                         variant="outlined"
                         color="secondary"
-
                         >
-                        <Button className={classes.button} component={NavLink} to="/">Dashboard</Button>
-                        <Button className={classes.button} component={NavLink} to="/about">About</Button>
-                        <Button className={classes.button} component={NavLink} to="/settings">Settings</Button>
+
+                        <Button className={classes.button} component={NavLink} to="/"><Text tid={"nav_dashboard"} /></Button>
+                        <Button className={classes.button} component={NavLink} to="/about"><Text tid={"nav_about"} /></Button>
+                        <Button className={classes.button} component={NavLink} to="/settings"><Text tid={"nav_settings"} /></Button>
                     </ButtonGroup>
     
                 </Stack>

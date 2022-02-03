@@ -10,6 +10,7 @@ import DataTable from '../components/DataTable';
 import { ButtonGroup, Stack, Typography } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import Text from '../components/Text';
 
 function Dashboard() {
 
@@ -31,7 +32,7 @@ function Dashboard() {
     useEffect(() => {
         onValue(db, (snapshot) => {
             if (snapshot.exists()) {
-                setDataset(snapshot.val()); //! implementovat moznost, ze tam nebude zadny zaznam - nahodit nejakou hlasku
+                setDataset(snapshot.val());
             } else {
                 toast.error("Empty database.")
                 setDataset({});
@@ -53,14 +54,16 @@ function Dashboard() {
 
     return (
         <>
-            <Typography sx={{ my: 4 }} variant="h3" align="center">Dashboard</Typography>
+            <Typography sx={{ my: 4 }} variant="h3" align="center">
+                <Text tid={"dashboard_mainHeader"} /> 
+            </Typography>
 
             <ClickAwayListener onClickAway={() => {
                 setSelectionModel([]);
                 setSelectedRow({});
             }} >
 
-                <Box sx={{ align: "center" }}>
+                <Box sx={{ align: "center", mb: 5}}>
                     {/* first "open" leads to conditional rendering  */}
                     {/* props "open" controls dialog opening */}
                     {open && <AddAstronaut
@@ -95,7 +98,7 @@ function Dashboard() {
                                 }
                             }}
                         >
-                            Remove
+                            <Text tid={"table_controls_remove"} />
                         </Button>
 
                         <ButtonGroup
@@ -106,13 +109,13 @@ function Dashboard() {
                                 onClick={() => handleDialogOpen("edit")}
                                 disabled={!selectedRow.id}
                             >
-                                Edit
+                                <Text tid={"table_controls_edit"} />
                             </Button>
 
                             <Button
                                 onClick={() => { handleDialogOpen("add") }}
                             >
-                                Add astronaut
+                                <Text tid={"table_controls_add"} />
                             </Button>
 
                         </ButtonGroup>
