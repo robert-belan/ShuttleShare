@@ -26,13 +26,6 @@ function Settings(props) {
 
         toast( changeThemeMessage, {
             duration: 3000,
-            position: 'bottom-left',
-            style: {
-                backgroundColor: theme.palette.background.dark,
-                color: theme.palette.secondary.main,
-                border: `1px solid ${theme.palette.secondary.main}`,
-                height: '2rem',
-            },
             id: 'theme',
         });
     }

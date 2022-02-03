@@ -22,17 +22,17 @@
     "footer_contacts_email": "Prosím, první kontakt e-mailem.",
 
 
-    "add_astronaut_toast": "[Přidán] Vítej na palubě.",
+    "add_astronaut_toast": "Přidáno",
     "add_astronaut_title": "Přidat astronauta",
     "add_astronaut_action": "Přidat",
     "add_astronaut_close": "Uzavřít",
 
-    "edit_astronaut_toast": "[Upraven] Život je změna",
+    "edit_astronaut_toast": "Upraveno.",
     "edit_astronaut_title": "Upravit astronauta",
     "edit_astronaut_action": "Upravit",
     "edit_astronaut_close": "Uzavřít",
 
-    "remove_astronaut_toast": "[Vymazán] Bylo nám ctí s tebou sloužit",
+    "remove_astronaut_toast": "Vymazáno",
     "remove_astronaut_title": "Vymazat",
     "remove_astronaut_contentText": "Opravdu chcete astronauta vymazat?",
     "remove_astronaut_action": "Ano, prosím!",

@@ -9,12 +9,13 @@ import {
 	Container, 
 	Box, 
 	CssBaseline, 
-	useMediaQuery  } from '@mui/material';
+	useMediaQuery,
+	useTheme
+} from '@mui/material';
 
 // Components
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Text from './components/Text';
 
 // Pages
 import Dashboard from './pages/Dashboard';
@@ -44,19 +45,33 @@ export default function App() {
 			return 'light';
 		}
 	} );
-		
+	
+	const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+	const matches = useMediaQuery(theme.breakpoints.down('sm'));
+
 	useEffect( () => {
 		localStorage.setItem("theme", mode);
 	}, [mode])
 
-	const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
-	const matches = useMediaQuery(theme.breakpoints.down('sm'));
+	const toasterOptions = useMemo(() => {
+		return {
+			duration: 3000,
+    		style: {
+				background: theme.palette.background.light,
+				color: theme.palette.secondary.main,
+				border: `1px solid ${theme.palette.secondary.main}`,
+				height: '2rem'
+			},
+		}
+	})
+
+
 	
 	return (
 		<>		<LanguageProvider>
 				<ThemeProvider theme={theme}>
 				<CssBaseline />
-				<Toaster />
+				<Toaster toastOptions={toasterOptions} position='bottom-left' />
 				<BrowserRouter>
 
 					<Box sx={{ mt: matches ? 2 : 5 }}>

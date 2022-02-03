@@ -1,6 +1,13 @@
 import React from 'react';
 import {NavLink, Link as RouterLink} from 'react-router-dom';
-import { ButtonGroup, Stack, Button, useMediaQuery } from '@mui/material';
+
+import { 
+    ButtonGroup, 
+    Stack, 
+    Button, 
+    useMediaQuery
+ } from '@mui/material';
+
 import { useTheme, makeStyles } from '@mui/styles';
 import Text from '../components/Text';
 
@@ -29,6 +36,7 @@ export default function Header() {
                         component={RouterLink} 
                         to="/" 
                         variant=""
+                        size="large"
                         >
                             ShuttleShare</Button>
                             

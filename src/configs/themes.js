@@ -23,7 +23,8 @@ export function getDesignTokens(mode) {
 					background: {
 						default: '#202020',
 						contrast: '#F5F5F5',
-						dark: '#202020'
+						dark: '#202020',
+						light: '#363636'
 					},
 					typography: {
 						fontFamily: 'Inconsolata, monospace'
@@ -48,7 +49,8 @@ export function getDesignTokens(mode) {
 					background: {
 						default: '#F5F5F5',
 						contrast: '#202020',
-						dark: '#202020'
+						dark: '#202020',
+						light: '#ededed'
 					},
 					typography: {
 						fontFamily: 'Inconsolata, monospace'

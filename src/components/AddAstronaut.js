@@ -13,8 +13,6 @@ import {
 	useTheme,
 } from '@mui/material';
 
-
-
 import { db } from '../firebaseConfig';
 import { child, push, set, remove } from 'firebase/database';
 
@@ -26,7 +24,6 @@ const initialState = {
 	rent: "",
 	returned: "",
 	note: ""
-
 }
 
 export default function AddAstronaut(props) {
@@ -116,7 +113,7 @@ export default function AddAstronaut(props) {
 			toastNotif: <Text tid={"remove_astronaut_toast"} />,
 			title: <Text tid={"remove_astronaut_title"} />,
 			contentText: <Text tid={"remove_astronaut_contentText"} />,
-			action: <span style={{color: theme.palette.warning.main}}><Text tid={"remove_astronaut_action"} /></span>,
+			action: <span style={{color: theme.palette.secondary.main}}><Text tid={"remove_astronaut_action"} /></span>,
 			cancelAction: <span style={{color: theme.palette.background.contrast}}><Text tid={"remove_astronaut_close"} /></span>
 		}
 	}
