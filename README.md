@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # ShuttleShare
 v0.8.0
 > _Know who got dirty your shuttle._
