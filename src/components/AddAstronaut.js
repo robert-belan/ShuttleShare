@@ -16,6 +16,9 @@ import {
 import { db } from '../firebaseConfig';
 import { child, push, set, remove } from 'firebase/database';
 
+
+
+
 const initialState = {
 	firstName: "",
 	lastName: "",
@@ -25,6 +28,8 @@ const initialState = {
 	returned: "",
 	note: ""
 }
+
+
 
 export default function AddAstronaut(props) {
 
@@ -45,23 +50,29 @@ export default function AddAstronaut(props) {
 		}
 	}, []);
 
-	const { firstName, lastName, birthDate, superPower, rent, returned, note } = state;
 
+	// used for controlled components
+	const { firstName, lastName, birthDate, superPower, rent, returned, note } = state;
 	const mode = props.mode;
 	const id = props.rowData.id;
+	
 
+	// Definition for conditional text content for the Dashboard's add/edit/remove controls. See below.
 	let texts = {}
+
+
 
 	function handleInputChange(event) {
 		const { name, value } = event.target;
 		setState({ ...state, [name]: value });
 	}
 
+
 	function handleSubmit(event) {
 		event.preventDefault();
 
 		if ( mode !== "remove" && (!firstName || !lastName || !birthDate || !superPower || !rent) ) {
-			toast.error("I need to know everything. \nNames, birth and particularly superpower!");
+			toast.error(<Text tid={"add_toast_after_actionClick"} />);
 		
 		} else if (mode === "add") {
 			push(db, state)
@@ -69,7 +80,7 @@ export default function AddAstronaut(props) {
 					props.close(); // closes dialog window
 					toast.success(texts.toastNotif);
 				})
-				.catch(() => { toast.error("Adding failed. Try it later, please.") });
+				.catch(() => { toast.error(<Text tid={"add_failed_toast_after_actionClick"} />) });
 		
 		} else if (mode === "edit") {
 			set(child(db, id), state)
@@ -77,7 +88,7 @@ export default function AddAstronaut(props) {
 					props.close(); // closes dialog window
 					toast.success(texts.toastNotif);
 				})
-				.catch(() => { toast.error("Editing failed. Try it later, please.") })
+				.catch(() => { toast.error(<Text tid={"edit_failed_toast_after_actionClick"} />) })
 		
 		} 
 	
@@ -88,6 +99,10 @@ export default function AddAstronaut(props) {
 		}
 	}
 
+
+	/**
+	 * Conditional text content for the Dashboard's add/edit/remove controls.
+	 */
 	if (mode === "add") {
 		texts = {
 			toastNotif: <Text tid={"add_astronaut_toast"} />,
@@ -118,6 +133,7 @@ export default function AddAstronaut(props) {
 		}
 	}
 
+	// MUI's component style config
 	const dialogSx = {
 		'& .MuiDialog-paper' : {
 			backgroundColor: 'background.default',
@@ -132,6 +148,7 @@ export default function AddAstronaut(props) {
 		}
 	}
 
+	// MUI's component style config
 	const textFieldSx = {
 		'& .MuiInputLabel-root': {
 			color: 'text.primary',

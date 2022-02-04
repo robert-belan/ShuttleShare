@@ -10,7 +10,6 @@ import {
 	Box, 
 	CssBaseline, 
 	useMediaQuery,
-	useTheme
 } from '@mui/material';
 
 // Components
@@ -23,6 +22,7 @@ import About from './pages/About';
 import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
 
+// Font families
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -36,6 +36,8 @@ import { LanguageProvider } from './containers/LanguageContext';
 // source: https://mui.com/customization/dark-mode/#dark-mode-with-custom-palette
 import { getDesignTokens } from './configs/themes';
 
+
+
 export default function App() {
 
 	const [mode, setMode] = useState( () => {
@@ -46,6 +48,7 @@ export default function App() {
 		}
 	} );
 	
+	// get theme's config object
 	const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 	const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -60,38 +63,34 @@ export default function App() {
 				background: theme.palette.background.light,
 				color: theme.palette.secondary.main,
 				border: `1px solid ${theme.palette.secondary.main}`,
-				height: '2rem'
 			},
 		}
 	})
 
 
 	
-	return (
-		<>		<LanguageProvider>
-				<ThemeProvider theme={theme}>
-				<CssBaseline />
-				<Toaster toastOptions={toasterOptions} position='bottom-left' />
-				<BrowserRouter>
+	return (<>
+		<LanguageProvider>
+		<ThemeProvider theme={theme}>
+		<CssBaseline />
+		<Toaster toastOptions={toasterOptions} position='bottom-left' />
+		<BrowserRouter>
 
-					<Box sx={{ mt: matches ? 2 : 5 }}>
-						<Container>
-							
-							<Header />
-							<Routes>
-								<Route path="/" element={<Dashboard />} />
-								<Route path="/about" element={<About />} />
-								<Route path="/settings" element={<Settings handleThemeToggle={setMode} />} />
-								<Route path="*" element={<NotFound />} />
-							</Routes>
-							<Footer  />
-
-						</Container>
-					</Box>
-
-				</BrowserRouter>
-				</ThemeProvider>
-				</LanguageProvider>
-		</>
-	);
+			<Box sx={{ mt: matches ? 2 : 5 }}>
+				<Container>	
+					<Header />
+					<Routes>
+						<Route path="/" element={<Dashboard />} />
+						<Route path="/about" element={<About />} />
+						<Route path="/settings" element={<Settings handleThemeToggle={setMode} />} />
+						<Route path="*" element={<NotFound />} />
+					</Routes>
+					<Footer  />
+				</Container>
+			</Box>
+			
+		</BrowserRouter>
+		</ThemeProvider>
+		</LanguageProvider>
+	</>);
 }

@@ -1,7 +1,7 @@
 {
-  "name": "astronauts-everywhere",
-  "version": "0.0.1",
-  "description": "TODO Description",
+  "name": "shareshuttle",
+  "version": "0.8.0",
+  "description": "App for educational purposes. Shareshuttle - Know who got your shuttle dirty. Astronauts Management System",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,8 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "@fontsource/inconsolata": "^4.5.1",
-    "@mui/styles": "^5.3.0",
-    "axios": "^0.25.0"
+    "@mui/styles": "^5.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",

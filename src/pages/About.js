@@ -1,6 +1,11 @@
 import React from 'react';
+
 import { List, Typography, useTheme } from '@mui/material';
+
 import Text from '../components/Text';
+
+
+
 
 function About() {
 

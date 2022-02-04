@@ -13,6 +13,7 @@ export default function LanguageSelector() {
     userLanguageChange(event.target.value);
   }
 
+  // MUI's component style config
   const sx = {
     color: 'secondary.main'
   }

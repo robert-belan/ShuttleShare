@@ -1,8 +1,8 @@
 {
     "contact": "Kontakt",
-    "dashboard_mainHeader": "Hlavní strana",
+    "dashboard_mainHeader": "Dashboard",
 
-    "nav_dashboard": "Hlavní strana",
+    "nav_dashboard": "Dashboard",
     "nav_about": "O aplikaci",
     "nav_settings": "Nastavení",
 
@@ -20,6 +20,12 @@
     "table_controls_add": "přidat astronauta",
 
     "footer_contacts_email": "Prosím, první kontakt e-mailem.",
+
+
+    "add_toast_after_actionClick": "Prosím, vyplňte alespoň povinná pole.",
+    "add_failed_toast_after_actionClick": "Přidání astronauta selhalo, zkuste to prosím později.",
+    "edit_failed_toast_after_actionClick": "Úprava údajů selhala, zkuste to, prosím, později.",
+
 
 
     "add_astronaut_toast": "Přidáno",

@@ -1,5 +1,5 @@
-// used only in development mode
-// using .env file
+// Used only in development mode.
+// Using .env file.
 import process from 'process';
 
 const apiKey = process.env.REACT_APP_API_KEY;

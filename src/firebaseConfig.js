@@ -3,6 +3,7 @@ import { getDatabase, ref } from 'firebase/database';
 
 let firebaseConfig = {};
 
+// There are different configs depends on environment.
 
 if ( process.env.NODE_ENV === "development") {
     const devEnv = await import('./environment.dev');
@@ -16,7 +17,6 @@ if ( process.env.NODE_ENV === "production") {
     firebaseConfig = { ...devEnv };
     console.log('firebaseConfig :>> ', firebaseConfig);
 }
-
 
 
 // Initialize Firebase

@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from 'react';
+
+import toast from 'react-hot-toast';
+
 import { db } from "../firebaseConfig";
 import { onValue } from "firebase/database";
-import Button from '@mui/material/Button';
+
+import { 
+    Button,
+    Box,
+    ClickAwayListener,
+    useMediaQuery,
+    useTheme,
+    ButtonGroup,
+    Stack,
+    Typography
+} from '@mui/material';
+
 import AddAstronaut from '../components/AddAstronaut';
-import toast from 'react-hot-toast';
-import ClickAwayListener from '@mui/material/ClickAwayListener';
-import Box from '@mui/material/Box';
 import DataTable from '../components/DataTable';
-import { ButtonGroup, Stack, Typography } from '@mui/material';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
 import Text from '../components/Text';
+
+
 
 function Dashboard() {
 
@@ -27,8 +37,7 @@ function Dashboard() {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
-
-    //* Get data. 
+    // Get data from the database.
     useEffect(() => {
         onValue(db, (snapshot) => {
             if (snapshot.exists()) {
@@ -55,7 +64,7 @@ function Dashboard() {
     return (
         <>
             <Typography sx={{ my: 4 }} variant="h3" align="center">
-                <Text tid={"dashboard_mainHeader"} /> 
+                <Text tid={"dashboard_mainHeader"} />
             </Typography>
 
             <ClickAwayListener onClickAway={() => {
@@ -63,7 +72,7 @@ function Dashboard() {
                 setSelectedRow({});
             }} >
 
-                <Box sx={{ align: "center", mb: 5}}>
+                <Box sx={{ align: "center", mb: 5 }}>
                     {/* first "open" leads to conditional rendering  */}
                     {/* props "open" controls dialog opening */}
                     {open && <AddAstronaut
@@ -122,10 +131,8 @@ function Dashboard() {
 
                     </Stack>
 
-
                 </Box>
             </ClickAwayListener>
-
         </>)
 }
 

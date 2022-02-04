@@ -1,4 +1,7 @@
 import React from 'react';
+
+import toast from 'react-hot-toast';
+
 import { 
     Typography, 
     Button, 
@@ -6,16 +9,17 @@ import {
     useMediaQuery, 
     Box, 
     Stack } from '@mui/material';
-import toast from 'react-hot-toast';
+
 import LanguageSelector from '../components/LanguageSelector';
 import Text from '../components/Text';
+
 
 
 function Settings(props) {
 
     const theme = useTheme();
-    const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
+    // toast's notification text 
     const changeThemeMessage = theme.palette.mode === 'dark'
         ? <Text tid={"toast_theme_light"} />
         : <Text tid={"toast_theme_dark"} />;
@@ -53,8 +57,7 @@ function Settings(props) {
                 <Text tid={"language_option"} /><LanguageSelector />
             </Box>
         </Stack>
-
-        </>);
+    </>);
 }
 
 export default Settings;

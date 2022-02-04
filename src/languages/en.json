@@ -22,6 +22,12 @@
     "footer_contacts_email": "Please, first contact by e-mail.",
 
 
+    "add_toast_after_actionClick": "Please, fill in required fields.",
+    "add_failed_toast_after_actionClick": "Adding failed. Try it later, please.",
+    "edit_failed_toast_after_actionClick": "Editing failed. Try it later, please.",
+
+
+
     "add_astronaut_toast": "[Added] Welcome on the board.",
     "add_astronaut_title": "Add astronaut",
     "add_astronaut_action": "Add",
