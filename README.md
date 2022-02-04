@@ -1,6 +1,6 @@
 # ShuttleShare
 v0.8.0
-> _Know who got dirty your shuttle._
+> _Know who got your shuttle dirty._
 
 <br>
 
